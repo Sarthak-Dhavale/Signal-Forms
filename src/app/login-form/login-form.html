@@ -12,5 +12,6 @@
          disabled:bg-gray-400 disabled:cursor-not-allowed
          hover:bg-blue-700 transition" [disabled]="!isFormValid()">Login
         </button>
+        <span (click)="goToRegistration()" class="text-blue-600 flex items-center justify-center hover:underline cursor-pointer font-medium">Register</span>
     </form>
 </div>

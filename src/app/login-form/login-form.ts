@@ -1,5 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import {form, Field} from '@angular/forms/signals';
+import { Router } from '@angular/router';
 
 type LoginFormModel = {
   userName : string,
@@ -14,7 +15,7 @@ type LoginFieldConfig = {
 }
 @Component({
   selector: 'app-login-form',
-  imports: [Field],
+  imports: [Field,],
   templateUrl: './login-form.html',
   styleUrl: './login-form.css',
 })
@@ -53,6 +54,13 @@ export class LoginForm {
       placeholder: 'Password'
     }
   ]
+
+  constructor(
+    private router :Router){}
+
+  goToRegistration(){
+    this.router.navigate(['/register']);
+  }
 
   onSubmit(event: Event){
     event?.preventDefault();
