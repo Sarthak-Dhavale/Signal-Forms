@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import {form, Field} from '@angular/forms/signals';
 
 type RegistrationFormModel = {
@@ -67,6 +67,18 @@ export class RegistrationForm {
       placeholder: 'Enter Email Address'
     }
   ]
+  isFormValid = computed( () => {
+    const formValue = this.registrationFormModel();
+    const onlyChars = /^[A-Za-z]+$/;
+    return (
+      onlyChars.test(formValue.fName) &&
+      onlyChars.test(formValue.mName) &&
+      onlyChars.test(formValue.lName) &&
+      formValue.address.trim().length > 0 &&
+      formValue.phone.trim().length === 10 &&
+      formValue.email.trim().includes('@')
+    )
+  })
 
   onRegister(event: Event){
     event?.preventDefault();

@@ -8,7 +8,7 @@
             }
         </div>
 
-        <button (click)="onRegister($event)" class="w-full bg-blue-600 text-white py-2 rounded-lg
+        <button (click)="onRegister($event)" [disabled]="!isFormValid()" class="w-full bg-blue-600 text-white py-2 rounded-lg
              font-medium hover:bg-blue-700 transition
              disabled:bg-gray-400 disabled:cursor-not-allowed">Register</button>
     </form>
